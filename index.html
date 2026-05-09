@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Academy - Welcome</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: rgb(212, 28, 197);
+            --secondary: #3b82f6;
+            --accent: #0ea5e9;
+            --light: #f0f9ff;
+            --dark: #1e293b;
+            --text: #334155;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('images/back2.png') no-repeat fixed;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0);
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            height: 240px;
+        }
+        
+        .logo img {
+            height: 100%;
+            width: auto;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+            cursor: pointer;
+        }
+        
+        nav a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+        
+        /* Hero Banner */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+            animation: slideDown 0.8s ease;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+        }
+        
+        /* Container & Sections */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        
+        section {
+            margin: 3rem 0;
+            animation: fadeIn 0.8s ease;
+        }
+        
+        section h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            text-align: center;
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 1rem;
+        }
+        
+        section h3 {
+            color: var(--secondary);
+            margin: 1.5rem 0 0.5rem 0;
+        }
+        
+        /* Grid Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid var(--secondary);
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 30px rgba(30, 64, 175, 0.15);
+        }
+        
+        .card h3 {
+            color: var(--primary);
+        }
+        
+        .card p {
+            color: #666;
+            margin-top: 1rem;
+        }
+        
+        /* Buttons */
+        button, .btn {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        button:hover, .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(30, 64, 175, 0.3);
+        }
+        
+        /* Form */
+        form {
+            max-width: 600px;
+            margin: 2rem auto;
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 6px;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+            background: white;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        /* Feature Cards */
+        .feature-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(30, 64, 175, 0.15);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        th {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: rgb(255, 255, 255);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        tr:hover {
+            background: var(--light);
+        }
+        
+        /* Announcements */
+        .announcement {
+            background: var(--light);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 6px;
+        }
+        
+        .announcement h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #475569;
+            color: #94a3b8;
+        }
+        
+        /* Hidden by default - show with JavaScript */
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(30, 64, 175, 0.2);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        /* Modal/Lightbox */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            position: relative;
+            background-color: white;
+            padding: 0;
+            border-radius: 12px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+            max-width: 90vw;
+            max-height: 90vh;
+            overflow: auto;
+        }
+        
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            background: none;
+            border: none;
+            z-index: 2001;
+            transition: transform 0.2s ease;
+        }
+        
+        .modal-close:hover {
+            transform: scale(1.2);
+        }
+        
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.3);
+            color: white;
+            border: none;
+            padding: 1rem 1.5rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+            z-index: 2001;
+        }
+        
+        .modal-nav:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .modal-prev {
+            left: 20px;
+        }
+        
+        .modal-next {
+            right: 20px;
+        }
+        
+        /* Animations */
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 1.8rem; }
+            .hero p { font-size: 1rem; }
+            nav { padding: 0.75rem 1rem; flex-wrap: wrap; }
+            .logo { font-size: 1.2rem; }
+            nav ul { gap: 0.75rem; flex-direction: column; }
+            nav a { font-size: 0.9rem; }
+            section h2 { font-size: 1.6rem; }
+            .grid { grid-template-columns: 1fr; }
+            .feature-cards { grid-template-columns: 1fr; }
+            .container { padding: 2rem 1rem; }
+        }
+        
+        @media (max-width: 480px) {
+            .hero { padding: 3rem 1rem; }
+            .hero h1 { font-size: 1.5rem; }
+            .hero p { font-size: 0.9rem; }
+            .logo { font-size: 1rem; }
+            nav ul { gap: 0.5rem; }
+            nav a { font-size: 0.8rem; }
+            section h2 { font-size: 1.3rem; }
+            .container { padding: 1.5rem 1rem; }
+            button { padding: 0.5rem 1rem; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo"><img src="images/logo.jpg" alt="School Logo"></div>
+        <ul>
+            <li><a onclick="showPage('home')">Home</a></li>
+            <li><a onclick="showPage('about')">About</a></li>
+            <li><a onclick="showPage('academics')">Academics</a></li>
+            <li><a onclick="showPage('admissions')">Admissions</a></li>
+            <li><a onclick="showPage('activities')">Activities</a></li>
+            <li><a onclick="showPage('news')">News</a></li>
+            <li><a onclick="showPage('contact')">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HOME PAGE -->
+    <div id="home" class="page active">
+        <div class="hero">
+            <h1>Welcome to Our School</h1>
+            <p>United we grow</p>
+        </div>
+
+        <div class="container">
+            <!-- Quick Features -->
+            <section>
+                <h2>Quick Access</h2>
+                <div class="feature-cards">
+                    <div class="feature-card">
+                        <h3>📝 Admissions</h3>
+                        <p>Learn about our application process and admission requirements</p>
+                        <button onclick="showPage('admissions')">Explore</button>
+                    </div>
+                    <div class="feature-card">
+                        <h3>📚 Academics</h3>
+                        <p>Discover our comprehensive curriculum and programs</p>
+                        <button onclick="showPage('academics')">Learn More</button>
+                    </div>
+                    <div class="feature-card">
+                        <h3>👥 Student Portal</h3>
+                        <p>Access grades, schedules, and important resources</p>
+                        <button onclick="alert('Portal: Coming Soon')">Login</button>
+                    </div>
+                    <div class="feature-card">
+                        <h3>☀️ Solar Cooking Program</h3>
+                        <p>Explore our innovative solar cooking initiative and learn sustainable cooking techniques</p>
+                        <button onclick="window.open('https://solarcookingkenya.vercel.app/', '_blank')">Discover</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Latest Announcements -->
+            <section>
+                <h2>Latest Announcements</h2>
+                <div class="announcement">
+                    <h4>🏗️ School Under Construction</h4>
+                    <p>Our school is currently under construction. We are working hard to provide enhanced facilities and learning spaces for our students.</p>
+                </div>
+                <div class="announcement">
+                    <h4>🤝 Need for Support</h4>
+                    <p>The Headteacher appeals to parents and all organizations for their support during this construction phase. Your contributions and cooperation are vital to our success.</p>
+                </div>
+                <div style="text-align: center; margin-top: 1rem;">
+                    <button onclick="showPage('admissions')" class="btn">View Fee Structure</button>
+                </div>
+            </section>
+
+            <section>
+                <h2>Support Our School</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>💝 Donate to Help Students</h3>
+                        <p>Your donation can support:</p>
+                        <ul style="margin: 1rem 0 0 1.2rem; color: #475569; list-style: disc inside;">
+                            <li>Child education support</li>
+                            <li>Feeding program support</li>
+                            <li>School instructional materials</li>
+                            <li>Purchase of playing kits</li>
+                        </ul>
+                        <p style="margin-top: 1rem;">Contact us or donate directly via PayPal.</p>
+                        <p><strong>PayPal:</strong> <a href="https://www.paypal.com/donate?business=asulmacentre@gmail.com" target="_blank" style="color: var(--secondary); text-decoration: underline;">asulmacentre@gmail.com</a></p>
+                        <p><strong>Email:</strong> <a href="mailto:asulmacentre@gmail.com" style="color: var(--secondary); text-decoration: underline;">asulmacentre@gmail.com</a></p>
+                        <button onclick="window.open('https://www.paypal.com/donate?business=asulmacentre@gmail.com', '_blank')">Donate via PayPal</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- ABOUT PAGE -->
+    <div id="about" class="page">
+        <div class="hero">
+            <h1>About Our School</h1>
+            <p>A Legacy of Excellence Since 2009</p>
+        </div>
+
+        <div class="container">
+            <section>
+                <h2>Our History</h2>
+                <p>Founded in 2009, Modern Academy has been a beacon of educational excellence for over two decades. Our institution has grown from a small school to a leading educational center, serving students from diverse backgrounds and empowering them to achieve their dreams.</p>
+                <p>Through constant innovation in teaching methods, investment in modern facilities, and a commitment to holistic development, we have maintained our position as a premier educational institution.</p>
+            </section>
+
+            <section>
+                <h2>Mission & Vision</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>Our Mission</h3>
+                        <p>To provide a world-class education that develops critical thinkers, fosters creativity, and instills values of integrity and responsibility in every student.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Our Vision</h3>
+                        <p>To create a dynamic learning environment where students excel academically, develop character, and prepare for meaningful contributions to society.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>School Values</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>Excellence</h3>
+                        <p>We strive for the highest standards in everything we do, from academics to High school life</p>
+                    </div>
+                    <div class="card">
+                        <h3>Integrity</h3>
+                        <p>Honesty and ethical behavior form the foundation of our school community.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Inclusion</h3>
+                        <p>We celebrate diversity and ensure every student feels valued and supported.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Innovation</h3>
+                        <p>We embrace new ideas and technologies to enhance the learning experience.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Administration</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>Headteacher</h3>
+                        <p>Responsible for overall school governance, strategic planning, and educational leadership.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Vice Headteacher - Academics</h3>
+                        <p>Oversees curriculum development, teaching quality, and academic performance.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Vice Headteacher - Administration</h3>
+                        <p>Manages staff operations, facilities, and administrative functions, besides handling disciplinary issues.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Head of Student Affairs</h3>
+                        <p>Coordinates student activities, discipline, and overall student welfare.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- ACADEMICS PAGE -->
+    <div id="academics" class="page">
+        <div class="hero">
+            <h1>Academic Excellence</h1>
+            <p>Comprehensive Programs for All Learners</p>
+        </div>
+
+        <div class="container">
+            <section>
+                <h2>Our Curriculum</h2>
+                <p>Our curriculum is designed to challenge, inspire, and prepare students for higher education and career success. We emphasize critical thinking, creativity, and practical application of knowledge across all disciplines.</p>
+            </section>
+
+            <section>
+                <h2>Departments & Classes</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>Social Sciences Department</h3>
+                        <p><strong>Classes:</strong> Languages & Literature,Humanities and Business Studies.</p>
+                        <p>Focuses on human interaction, communication, and Business.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Stem Department</h3>
+                        <p><strong>Classes:</strong> Science Technology, Engineering and Mathematics.</p>
+                        <p>Focuses on science-oriented careers.</p>
+                    </div>
+                
+                    <div class="card">
+                        <h3>Arts & Sports</h3>
+                        <p><strong>Classes:</strong> Performing Arts, Visual Arts and Sports.</p>
+                        <p>Focuses on creative talents and physical abilities.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Subjects Offered</h2>
+                <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+                    <ul style="list-style: none; columns: 3; gap: 2rem;">
+                        <li style="padding: 0.5rem 0;">✓ Social Studies</li>
+                        <li style="padding: 0.5rem 0;">✓ Creative Arts</li>
+                        <li style="padding: 0.5rem 0;">✓ English</li>
+                        <li style="padding: 0.5rem 0;">✓ Digital Literacy</li>
+                        <li style="padding: 0.5rem 0;">✓ Public Speaking</li>
+                        <li style="padding: 0.5rem 0;">✓ Environmental Science</li>
+                        <li style="padding: 0.5rem 0;">✓ Pre-tech</li>
+                        <li style="padding: 0.5rem 0;">✓ CRE</li>
+                        <li style="padding: 0.5rem 0;">✓ Agriculture & Nutrition</li>
+                        <li style="padding: 0.5rem 0;">✓ Mathematics</li>
+                        <li style="padding: 0.5rem 0;">✓ Kiswahili</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Academic Calendar</h2>
+                <p style="text-align: center; margin: 1rem 0;"><strong>Download the complete academic calendar below:</strong></p>
+                <div style="text-align: center;">
+                    <button onclick="alert('Calendar Download: Academic_Calendar_2026-2027.pdf')">📥 Download Academic Calendar (PDF)</button>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- ADMISSIONS PAGE -->
+    <div id="admissions" class="page">
+        <div class="hero">
+            <h1>Admissions</h1>
+            <p>Join Our Community of Learners</p>
+        </div>
+
+        <div class="container">
+            <section>
+                <h2>Application Process</h2>
+                <div style="background: var(--light); padding: 2rem; border-radius: 12px; margin: 1rem 0;">
+                    <ol style="margin-left: 2rem; line-height: 2;">
+                        <li><strong>Step 1:</strong> Complete the online application form on our portal</li>
+                        <li><strong>Step 2:</strong> Submit required documents (transcripts, recommendations, test scores)</li>
+                        <li><strong>Step 3:</strong> Attend a personal interview with the admissions team</li>
+                        <li><strong>Step 4:</strong> Receive admission decision within 2 weeks</li>
+                        <li><strong>Step 5:</strong> Complete enrollment and orientation</li>
+                    </ol>
+                </div>
+            </section>
+
+            <section>
+                <h2>Admission Requirements</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>Academic Credentials</h3>
+                        <p>• Previous school transcripts<br>• Minimum GPA requirements (varies by grade)<br>• Standardized test scores</p>
+                    </div>
+                    <div class="card">
+                        <h3>Documentation</h3>
+                        <p>• Birth certificate<br>• Medical records <br>• Two teacher recommendations</p>
+                    </div>
+                    <div class="card">
+                        <h3>Other Requirements</h3>
+                        <p>• Personal statement<br>• Parent/guardian information<br>• Residency proof</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Contact The Admissions</h2>
+                <div style="background: var(--light); padding: 2rem; border-radius: 12px; text-align: center;">
+                    <p style="font-size: 1.1rem; margin-bottom: 1rem;">For detailed information about our fee structure and financial assistance programs, please contact our admissions office.</p>
+                    <button onclick="showPage('contact')" style="padding: 1rem 2rem; font-size: 1rem;">📞 Contact Admissions</button>
+                </div>
+            </section>
+
+            <section style="text-align: center;">
+                <button onclick="showPage('contact')" style="padding: 1rem 3rem; font-size: 1.1rem;">📝 Apply Now</button>
+            </section>
+        </div>
+    </div>
+
+    <!-- ACTIVITIES PAGE -->
+    <div id="activities" class="page">
+        <div class="hero">
+            <h1>Clubs & Activities</h1>
+            <p>Explore Your Passions Beyond the Classroom</p>
+        </div>
+
+        <div class="container">
+            <section>
+                <h2>Student Clubs</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>🖥️ Computer Science Club</h3>
+                        <p>Learn Basics of Computer, Internet Basics, and Microsoft Office. Build real projects and compete.</p>
+                    </div>
+                    <div class="card">
+                        <h3>🎨 Art & Design Club</h3>
+                        <p>Express creativity through visual arts and graphic design.</p>
+                    </div>
+                    <div class="card">
+                        <h3>🎭 Drama Club</h3>
+                        <p>Perform in school plays and musicals.</p>
+                    </div>
+                     </div>
+                    <div class="card">
+                        <h3>Solar Cooking Club</h3>
+                        <p>Learners are equipped with the knowledge and skills they need to harness the energy of the sun and use it to cook.</p>
+                    </div>
+                     <div class="card">
+                        <h3>Chess Club</h3>
+                        <p>Develop strategic thinking and problem-solving skills through chess.</p>
+                    </div>
+                                     
+                        
+                        
+                    
+                </div>
+            </section>
+
+            <section>
+                <h2>Sports Programs</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>⚽ Football</h3>
+                        <p>Competitive teams for fall and spring seasons. Varsity and JV divisions available.</p>
+                    </div>
+                  
+                    <div class="card">
+                        <h3>🏐 Volleyball</h3>
+                        <p>Team sport emphasizing coordination, strategy, and sportsmanship.</p>
+                    </div>
+                    
+                   
+                    <div class="card">
+                        <h3>🏃 Track & Field</h3>
+                        <p>Sprints, distance running, and field events with state-of-the-art track facilities.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>📸 Graduation & Events Gallery</h2>
+                <p style="text-align: center; margin-bottom: 2rem; color: #666;">Click on any image to view in full size</p>
+                <div class="gallery" id="graduationGallery">
+                    <div class="gallery-item" onclick="openModal(0)">
+                        <img src="images/graduation.jpeg" alt="Graduation Ceremony 2025">
+                    </div>
+                    <div class="gallery-item" onclick="openModal(1)">
+                        <img src="images/graduation2.jpg" alt="Class of 2025 Graduates">
+                    </div>
+                    <div class="gallery-item" onclick="openModal(2)">
+                        <img src="images/graduation3.jpg" alt="Graduation Celebration">
+                    </div>
+                    <div class="gallery-item" onclick="openModal(3)">
+                        <img src="images/graduation4.jpg" alt="Alumni Group Photo">
+                    </div>
+                    <div class="gallery-item" onclick="openModal(4)">
+                        <img src="images/graduation5.jpg" alt="Graduation Moments">
+                    </div>
+                    <div class="gallery-item" onclick="openModal(5)">
+                        <img src="images/graduation6.jpg" alt="Graduates with School">
+                    </div>
+                    <div class="gallery-item" onclick="openModal(6)">
+                        <img src="images/Students1.jpeg" alt="Students Group Photo">
+                    </div>
+                    <div class="gallery-item" onclick="openModal(7)">
+                        <img src="images/chess.jpeg" alt="Chess Club Activity">
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>School Gallery</h2>
+                <p style="text-align: center; color: #666; margin: 2rem 0;">📸 Gallery showcasing school events, activities, and school facilities (general School life images)</p>
+                <div class="grid">
+                    <div class="card" style="text-align: center; color: #999;">📷 School Gallery</div>
+                    
+                    
+
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- NEWS & EVENTS PAGE -->
+    <div id="news" class="page">
+        <div class="hero">
+            <h1>News & Events</h1>
+            <p>Stay Updated with School Updates</p>
+        </div>
+
+        <div class="container">
+                     
+            <section>
+                <h2>Student Achievements</h2>
+                
+                <div class="card">
+                    <h3>🥇 Academic Excellence Awards</h3>
+                    <p>Recognizing students with outstanding grades and academic performance across all disciplines.</p>
+                </div>
+
+                <div class="card">
+                    <h3>🏆 Athletic Honors</h3>
+                    <p>Celebrating our athletes' victories.</p>
+                </div>
+
+                <div class="card">
+                    <h3>🌟 Community Service Awards</h3>
+                    <p>Honoring students who contribute significantly to community service and volunteer work.</p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- CONTACT PAGE -->
+    <div id="contact" class="page">
+        <div class="hero">
+            <h1>Get In Touch</h1>
+            <p>We'd Love to Hear From You</p>
+        </div>
+
+        <div class="container">
+            <section>
+                <h2>Contact Information</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>📞 Phone</h3>
+                        <p>+254 751 530 056</p>
+                        <p style="font-size: 0.9rem; color: #999;">Monday - Friday, 8:00 AM - 4:00 PM</p>
+                    </div>
+                    <div class="card">
+                        <h3>📧 Email</h3>
+                        <p>asulmacentre@gmail.com</p>
+                        <p style="font-size: 0.9rem; color: #999;">admissions@asulmacentre.com</p>
+                    </div>
+                    <div class="card">
+                        <h3>📍 Location</h3>
+                        <p>Kariobangi North</p>
+                        <p>Nairobi City, Embakasi North</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Send Us a Message</h2>
+                <form action="https://formsubmit.co/asulmacentre@gmail.com" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit">Send Message</button>
+                </form>
+            </section>
+
+            <section>
+                <h2>Location Map</h2>
+                <div style="background: var(--light); padding: 3rem; border-radius: 12px; text-align: center; color: #999; margin: 2rem 0;">
+                    🗺️ [Embedded Map Placeholder - Integration with Google Maps or similar service available]
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Image Modal/Lightbox -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <button class="modal-nav modal-prev" onclick="changeImage(-1)">&#10094;</button>
+            <img id="modalImage" src="" alt="Gallery Image" style="max-height: calc(90vh - 20px);">
+            <button class="modal-nav modal-next" onclick="changeImage(1)">&#10095;</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-section">
+                <h4>About School</h4>
+                <ul>
+                    <li><a href="javascript:void(0)" onclick="showPage('about')">About Us</a></li>
+                    <li><a href="javascript:void(0)" onclick="showPage('about')">Mission & Vision</a></li>
+                    <li><a href="javascript:void(0)" onclick="showPage('about')">Administration</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Academics</h4>
+                <ul>
+                    <li><a href="javascript:void(0)" onclick="showPage('academics')">Programs</a></li>
+                    <li><a href="javascript:void(0)" onclick="showPage('academics')">Curriculum</a></li>
+                    <li><a href="javascript:void(0)" onclick="showPage('academics')">Calendar</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Admissions</h4>
+                <ul>
+                    <li><a href="javascript:void(0)" onclick="showPage('admissions')">Apply Now</a></li>
+                    <li><a href="javascript:void(0)" onclick="showPage('admissions')">Requirements</a></li>
+                    <li><a href="javascript:void(0)" onclick="showPage('admissions')">Fees</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul>
+                    <li>📞 +254 726 927 913</li>
+                    <li>📧 asulmacentre@gmail.com</li>
+                    <li>📍 Nairobi City, Kariobangi North</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Asulma centre School. All rights reserved.</p>
+            <p>Privacy Policy | Terms of Service</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentImageIndex = 0;
+        const galleryImages = [];
+
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            // Show selected page
+            const selectedPage = document.getElementById(pageId);
+            if (selectedPage) {
+                selectedPage.classList.add('active');
+                window.scrollTo(0, 0);
+            }
+        }
+
+        function openModal(index) {
+            currentImageIndex = index;
+            const gallery = document.querySelectorAll('#graduationGallery .gallery-item img');
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            
+            if (gallery[index]) {
+                modalImage.src = gallery[index].src;
+                modalImage.alt = gallery[index].alt;
+                modal.classList.add('active');
+            }
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('active');
+        }
+
+        function changeImage(direction) {
+            const gallery = document.querySelectorAll('#graduationGallery .gallery-item img');
+            currentImageIndex += direction;
+            
+            if (currentImageIndex >= gallery.length) {
+                currentImageIndex = 0;
+            } else if (currentImageIndex < 0) {
+                currentImageIndex = gallery.length - 1;
+            }
+            
+            const modalImage = document.getElementById('modalImage');
+            modalImage.src = gallery[currentImageIndex].src;
+            modalImage.alt = gallery[currentImageIndex].alt;
+        }
+
+        // Close modal when clicking outside the content
+        document.getElementById('imageModal').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closeModal();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            const modal = document.getElementById('imageModal');
+            if (modal.classList.contains('active')) {
+                if (event.key === 'ArrowLeft') {
+                    changeImage(-1);
+                } else if (event.key === 'ArrowRight') {
+                    changeImage(1);
+                } else if (event.key === 'Escape') {
+                    closeModal();
+                }
+            }
+        });
+
+        // Default to home page on load
+        window.addEventListener('load', () => {
+            showPage('home');
+        });
+    </script>
+</body>
+</html>
